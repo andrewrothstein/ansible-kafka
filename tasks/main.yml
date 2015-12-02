@@ -1,0 +1,15 @@
+---
+- name: download kafka tgz...
+  get_url: url='{{kafka_tgz_url}}' dest='/tmp/{{kafka_tgz}}'
+
+- name: unarchive...
+  unarchive: copy=no src='/tmp/{{kafka_tgz}}' dest='/opt'
+
+- name: link...
+  file: >-
+    src=/opt/kafka_{{kafka_scala_ver}}-{{kafka_ver}}
+    dest=/opt/kafka
+    state=link
+
+- name: include kafka in the default path
+  copy: src='etc/profile.d/kafka.sh' dest='/etc/profile.d/kafka.sh' mode=644
