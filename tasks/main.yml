@@ -13,3 +13,26 @@
 
 - name: include kafka in the default path
   copy: src='etc/profile.d/kafka.sh' dest='/etc/profile.d/kafka.sh' mode=644
+
+- name: install /opt/kafka/config/server.properties
+  template: >-
+    src=server.properties.j2
+    dest=/opt/kafka/config/server.properties
+    owner=root
+    group=root
+    mode=0644
+
+- name: install kafka.service...
+  template: >-
+    src=kafka.service.j2
+    dest=/etc/systemd/system/kafka.service
+    owner=root
+    group=root
+    mode=0644
+
+- name: systemctl daemon-reload
+  command: systemctl daemon-reload
+
+- name: launch kafka...
+  service: name=kafka.service enabled=yes state=started
+  

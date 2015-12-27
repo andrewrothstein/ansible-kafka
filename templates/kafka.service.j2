@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache Kafka Broker
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target syslog.target
+After=network.target syslog.target
+
+ConditionPathExists=/opt/kafka/config/server.properties
+ConditionPathExists=/var/log/kafka
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/kafka
+ExecStart=bin/kafka-server.sh config/server.properties
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
