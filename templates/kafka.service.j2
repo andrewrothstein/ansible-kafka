@@ -1,8 +1,8 @@
 [Unit]
 Description=Apache Kafka Broker
 Documentation=http://kafka.apache.org/documentation.html
-Requires=network.target syslog.target
-After=network.target syslog.target
+Requires=network.target
+After=network.target
 
 ConditionPathExists=/opt/kafka/config/server.properties
 ConditionPathExists=/var/log/kafka
