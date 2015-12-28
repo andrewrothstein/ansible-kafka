@@ -21,11 +21,15 @@
 
 - name: install /opt/kafka/config/server.properties
   template: >-
-    src=server.properties.j2
-    dest=/opt/kafka/config/server.properties
+    src={{item}}.j2
+    dest=/opt/kafka/config/{{item}}
     owner=root
     group=root
     mode=0644
+  with_items:
+    - server.properties
+    - consumer.properties
+    - producer.properties
 
 - name: install kafka.service...
   template: >-

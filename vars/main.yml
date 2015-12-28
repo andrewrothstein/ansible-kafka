@@ -5,3 +5,5 @@ kafka_tgz : 'kafka_{{kafka_scala_ver}}-{{kafka_ver}}.tgz'
 kafka_tgz_url : '{{kafka_mirror}}/{{kafka_ver}}/{{kafka_tgz}}'
 
 kafka_zk_connect : "{% for host in groups['zookeeper'] %}{{hostvars[host]['ansible_default_ipv4']['address']}}:2181{% if not loop.last %},{% endif %}{% endfor %}/kafka"
+
+kafka_broker_connect : "{% for host in groups['kafka'] %}{{hostvars[host]['ansible_default_ipv4']['address']}}:9202{% if not loop.last %},{% endif %}{% endfor %}"
