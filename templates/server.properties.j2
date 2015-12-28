@@ -117,7 +117,7 @@ log.cleaner.enable=false
 # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
 # You can also append an optional chroot string to the urls to specify the
 # root directory for all kafka znodes.
-zookeeper.connect={% for host in groups['zookeeper'] %}{{hostvars[host]['ansible_default_ipv4']['address']}}:2181{% if not loop.last %},{% endif %}{% endfor %}/kafka
+zookeeper.connect={{kafka_zk_connect}}
 
 # Timeout in ms for connecting to zookeeper
 zookeeper.connection.timeout.ms=6000

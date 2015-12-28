@@ -12,7 +12,12 @@
     state=link
 
 - name: include kafka in the default path
-  copy: src='etc/profile.d/kafka.sh' dest='/etc/profile.d/kafka.sh' mode=644
+  template: >
+    src='etc/profile.d/kafka.sh'
+    dest='/etc/profile.d/kafka.sh'
+    mode=644
+    owner=root
+    group=root
 
 - name: install /opt/kafka/config/server.properties
   template: >-
@@ -34,5 +39,5 @@
   command: systemctl daemon-reload
 
 - name: launch kafka...
-  service: name=kafka.service enabled=yes state=started
+  service: name=kafka.service enabled=yes state=restarted
   

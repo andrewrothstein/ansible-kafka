@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStartPre=mkdir -p /var/log/kafka
+ExecStartPre=-/usr/bin/mkdir -p /var/log/kafka
 ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
 Restart=on-failure
 
