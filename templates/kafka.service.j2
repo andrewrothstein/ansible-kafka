@@ -4,13 +4,10 @@ Documentation=http://kafka.apache.org/documentation.html
 Requires=network.target
 After=network.target
 
-ConditionPathExists=/opt/kafka/config/server.properties
-ConditionPathExists=/var/log/kafka
-
 [Service]
 Type=simple
-WorkingDirectory=/opt/kafka
-ExecStart=bin/kafka-server.sh config/server.properties
+ExecStartPre=mkdir -p /var/log/kafka
+ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
 Restart=on-failure
 
 [Install]
