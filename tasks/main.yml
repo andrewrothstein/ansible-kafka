@@ -1,9 +1,17 @@
 ---
 - name: download kafka tgz...
-  get_url: url='{{kafka_tgz_url}}' dest='/tmp/{{kafka_tgz}}'
+  get_url: >
+   url={{kafka_tgz_url}}
+   dest=/tmp/{{kafka_tgz}}
+   owner=root
+   group=root
+   mode=0644
 
 - name: unarchive...
-  unarchive: copy=no src='/tmp/{{kafka_tgz}}' dest='/opt'
+  unarchive: >
+    copy=no
+    src=/tmp/{{kafka_tgz}}
+    dest=/opt
 
 - name: link...
   file: >-
@@ -32,6 +40,7 @@
     - producer.properties
 
 - name: install kafka.service...
+  register: kafka_service_installed
   template: >-
     src=kafka.service.j2
     dest=/etc/systemd/system/kafka.service
@@ -40,8 +49,9 @@
     mode=0644
 
 - name: systemctl daemon-reload
+  when: kafka_service_installed.changed
   command: systemctl daemon-reload
 
 - name: launch kafka...
-  service: name=kafka.service enabled=yes state=restarted
+  service: name=kafka.service enabled=yes state=started
   
