@@ -6,6 +6,7 @@
    owner=root
    group=root
    mode=0644
+   timeout=100
 
 - name: unarchive...
   unarchive: >
