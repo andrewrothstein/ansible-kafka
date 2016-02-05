@@ -1,5 +1,5 @@
 ---
 kafka_ver : '0.9.0.0'
 kafka_scala_ver : '2.11'
-kafka_mirror : 'http://mirrors.gigenet.com/apache/kafka'
+kafka_mirror : 'http://mirror.cogentco.com/pub/apache/kafka'
 kafka_log_dirs : '/var/log/kafka'
