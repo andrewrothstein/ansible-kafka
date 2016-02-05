@@ -13,10 +13,11 @@
     copy=no
     src=/tmp/{{kafka_tgz}}
     dest=/opt
+    creates=/opt/{{kafka_name}}
 
 - name: link...
   file: >-
-    src=/opt/kafka_{{kafka_scala_ver}}-{{kafka_ver}}
+    src=/opt/{{kafka_name}}
     dest=/opt/kafka
     state=link
 
