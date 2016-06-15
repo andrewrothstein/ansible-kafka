@@ -29,7 +29,7 @@
     owner=root
     group=root
 
-- name: install /opt/kafka/config/server.properties
+- name: install /opt/kafka/config/*.properties
   template: >-
     src={{item}}.j2
     dest=/opt/kafka/config/{{item}}
