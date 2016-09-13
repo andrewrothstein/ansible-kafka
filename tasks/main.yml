@@ -1,59 +1,38 @@
 ---
 - name: download kafka tgz...
+  become: yes
+  become_user: root
   get_url: >
    url={{kafka_tgz_url}}
    dest=/tmp/{{kafka_tgz}}
-   owner=root
-   group=root
    mode=0644
-   timeout=100
+   timeout={{kafka_download_timeout_seconds}}
 
 - name: unarchive...
+  become: yes
+  become_user: root
   unarchive: >
     copy=no
     src=/tmp/{{kafka_tgz}}
-    dest=/opt
-    creates=/opt/{{kafka_name}}
+    dest={{kafka_install_parent_dir}}
+    creates={{kafka_install_parent_dir}}/{{kafka_name}}
 
 - name: link...
+  become: yes
+  become_user: root
   file: >-
-    src=/opt/{{kafka_name}}
-    dest=/opt/kafka
+    src={{kafka_install_parent_dir}}/{{kafka_name}}
+    dest={{kafka_install_parent_dir}}/kafka
     state=link
 
 - name: include kafka in the default path
-  template: >
-    src='etc/profile.d/kafka.sh'
-    dest='/etc/profile.d/kafka.sh'
-    mode=644
-    owner=root
-    group=root
-
-- name: install /opt/kafka/config/*.properties
-  template: >-
-    src={{item}}.j2
-    dest=/opt/kafka/config/{{item}}
-    owner=root
-    group=root
-    mode=0644
+  become: yes
+  become_user: root
   with_items:
-    - server.properties
-    - consumer.properties
-    - producer.properties
-
-- name: install kafka.service...
-  register: kafka_service_installed
-  template: >-
-    src=kafka.service.j2
-    dest=/etc/systemd/system/kafka.service
-    owner=root
-    group=root
+    - etc/profile.d/kafka.sh
+  template: >
+    src={{item}}
+    dest=/{{item}}
     mode=0644
 
-- name: systemctl daemon-reload
-  when: kafka_service_installed.changed
-  command: systemctl daemon-reload
-
-- name: launch kafka...
-  service: name=kafka.service enabled=yes state=started
-  
+- include: configure.yml

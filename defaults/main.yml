@@ -1,6 +1,10 @@
 ---
-kafka_ver : '0.10.0.0'
+kafka_ver : '0.10.0.1'
 kafka_scala_ver : '2.11'
 kafka_mirror : 'http://mirror.cogentco.com/pub/apache/kafka'
+kafka_download_timeout_seconds: 600
+kafka_install_parent_dir: /opt
+
+kafka_launch: true
 kafka_log_dirs : '/var/log/kafka'
 kafka_iface : 'eth0'
