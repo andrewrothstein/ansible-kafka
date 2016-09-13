@@ -18,9 +18,14 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - trusty
+        - xenial
 
   galaxy_tags:
     - development
 
-dependencies: []
+dependencies:
+  - role: andrewrothstein.unarchive-deps
+    version: v1.0.3
+  - role: andrewrothstein.java
+    version: v1.0.2
   
