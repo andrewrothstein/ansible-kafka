@@ -4,7 +4,3 @@ kafka_tgz : '{{kafka_name}}.tgz'
 
 # http://mirrors.gigenet.com/apache/kafka/0.9.0.0/kafka_2.11-0.9.0.0.tgz
 kafka_tgz_url : '{{kafka_mirror}}/{{kafka_ver}}/{{kafka_tgz}}'
-
-kafka_zk_connect : "{% for host in groups['zookeeper-quorum'] %}{{hostvars[host]['ansible_' + kafka_iface]['ipv4']['address']}}:2181{% if not loop.last %},{% endif %}{% endfor %}/kafka"
-
-kafka_broker_connect : "{% for host in groups['kafka'] %}{{hostvars[host]['ansible_' + kafka_iface]['ipv4']['address']}}:9202{% if not loop.last %},{% endif %}{% endfor %}"

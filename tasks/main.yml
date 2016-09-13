@@ -31,8 +31,6 @@
   with_items:
     - etc/profile.d/kafka.sh
   template: >
-    src={{item}}
+    src={{item}}.j2
     dest=/{{item}}
     mode=0644
-
-- include: configure.yml
