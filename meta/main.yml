@@ -27,5 +27,5 @@ dependencies:
   - role: andrewrothstein.unarchive-deps
     version: v1.0.3
   - role: andrewrothstein.java
-    version: v1.0.2
+    version: v2.0.1
   
