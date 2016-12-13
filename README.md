@@ -1,29 +1,31 @@
 andrewrothstein.kafka
 =====================
 
-Installs Kafka and its binary dependencies
+Installs [Kafka](https://kafka.apache.org/) and its binary dependencies
 
 Requirements
 ------------
 
-See [meta/main.yml]
+See [meta/main.yml](meta/main.yml)
 
 Role Variables
 --------------
 
-See [defaults/main.yml]
+See [defaults/main.yml](defaults/main.yml)
 
 Dependencies
 ------------
 
-See [meta/main.yml]
+See [meta/main.yml](meta/main.yml)
 
 Example Playbook
 ----------------
 
-    - hosts: servers
-      roles:
-         - andrewrothstein.kafka
+```yml
+- hosts: servers
+  roles:
+    - andrewrothstein.kafka
+```
 
 License
 -------
@@ -33,4 +35,4 @@ MIT
 Author Information
 ------------------
 
-Andrew Rothstein andrew.rothstein@gmail.com
+Andrew Rothstein <andrew.rothstein@gmail.com>
