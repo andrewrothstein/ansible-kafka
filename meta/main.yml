@@ -9,23 +9,22 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
+        - all
     - name: Fedora
       versions:
-        - 21
-        - 22
-        - 23
+        - all
     - name: Ubuntu
       versions:
-        - trusty
-        - xenial
+        - all
 
   galaxy_tags:
-    - development
+    - kafka
+    - queue
+    - cqrs
 
 dependencies:
   - role: andrewrothstein.unarchive-deps
-    version: v1.0.3
-  - role: andrewrothstein.java
-    version: v2.0.1
+    version: v1.0.5
+  - role: andrewrothstein.java-oracle-jre
+    version: v1.0.1
   
