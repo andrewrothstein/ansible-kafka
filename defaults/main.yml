@@ -1,6 +1,7 @@
 ---
-kafka_ver : '0.10.1.0'
+kafka_ver : '0.10.1.1'
 kafka_scala_ver : '2.11'
-kafka_mirror : 'http://mirror.cogentco.com/pub/apache/kafka'
+kafka_mirror : http://mirror.cogentco.com/pub/apache/kafka
 kafka_download_timeout_seconds: 600
 kafka_install_parent_dir: /usr/local
+kafka_checksum: sha256:1540800779429d8f0a08be7b300e4cb6500056961440a01c8dbb281db76f0929

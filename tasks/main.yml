@@ -2,35 +2,36 @@
 - name: download kafka tgz...
   become: yes
   become_user: root
-  get_url: >
-   url={{kafka_tgz_url}}
-   dest=/tmp/{{kafka_tgz}}
-   mode=0644
-   timeout={{kafka_download_timeout_seconds}}
+  get_url:
+   url: '{{kafka_tgz_url}}'
+   dest: /tmp/{{kafka_tgz}}
+   mode: '0644'
+   timeout: '{{kafka_download_timeout_seconds}}'
+   checksum: '{{kafka_checksum}}'
 
 - name: unarchive...
   become: yes
   become_user: root
-  unarchive: >
-    copy=no
-    src=/tmp/{{kafka_tgz}}
-    dest={{kafka_install_parent_dir}}
-    creates={{kafka_install_parent_dir}}/{{kafka_name}}
+  unarchive:
+    copy: no
+    src: /tmp/{{kafka_tgz}}
+    dest: '{{kafka_install_parent_dir}}'
+    creates: '{{kafka_install_parent_dir}}/{{kafka_name}}'
 
 - name: link...
   become: yes
   become_user: root
-  file: >-
-    src={{kafka_install_parent_dir}}/{{kafka_name}}
-    dest={{kafka_install_parent_dir}}/kafka
-    state=link
+  file:
+    src: '{{kafka_install_parent_dir}}/{{kafka_name}}'
+    dest: '{{kafka_install_parent_dir}}/kafka'
+    state: link
 
 - name: include kafka in the default path
   become: yes
   become_user: root
   with_items:
     - etc/profile.d/kafka.sh
-  template: >
-    src={{item}}.j2
-    dest=/{{item}}
-    mode=0644
+  template:
+    src: '{{item}}.j2'
+    dest: /{{item}}
+    mode: '0644'
