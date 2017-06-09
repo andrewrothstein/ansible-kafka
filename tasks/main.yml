@@ -16,22 +16,23 @@
     copy: no
     src: /tmp/{{kafka_tgz}}
     dest: '{{kafka_install_parent_dir}}'
-    creates: '{{kafka_install_parent_dir}}/{{kafka_name}}'
+    creates: '{{kafka_install_dir}}'
 
 - name: link...
   become: yes
   become_user: root
   file:
-    src: '{{kafka_install_parent_dir}}/{{kafka_name}}'
-    dest: '{{kafka_install_parent_dir}}/kafka'
+    src: '{{kafka_install_dir}}'
+    dest: '{{kafka_install_link_dir}}'
     state: link
 
 - name: include kafka in the default path
   become: yes
   become_user: root
   with_items:
-    - etc/profile.d/kafka.sh
+    - d: /etc/profile.d
+      f: kafka.sh
   template:
-    src: '{{item}}.j2'
-    dest: /{{item}}
-    mode: '0644'
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m|default("0644")}}'

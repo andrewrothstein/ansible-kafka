@@ -1,5 +1,6 @@
 andrewrothstein.kafka
 =====================
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-kafka.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-kafka)
 
 Installs [Kafka](https://kafka.apache.org/) and its binary dependencies
 
