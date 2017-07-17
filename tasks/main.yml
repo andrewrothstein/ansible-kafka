@@ -13,7 +13,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{kafka_tgz}}
     dest: '{{kafka_install_parent_dir}}'
     creates: '{{kafka_install_dir}}'
