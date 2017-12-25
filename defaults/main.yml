@@ -1,7 +1,12 @@
 ---
-kafka_ver : '0.11.0.1'
-kafka_scala_ver : '2.12'
-kafka_mirror : http://mirror.cogentco.com/pub/apache/kafka
 kafka_download_timeout_seconds: 600
 kafka_install_parent_dir: /usr/local
-kafka_checksum: sha256:c776f2dbb7f4e1af6b61e32d482b513a1788bf5f39602746b005ab92601a46f2
+
+kafka_mirror : http://apache.mirrors.hoobly.com/kafka
+kafka_scala_ver : '2.12'
+kafka_ver : '1.0.0'
+
+kafka_checksums:
+  '1.0.0':
+    '2.11': sha256:b5b535f8db770cda8513e391917d0f5a35ef24c537ef3d29dcd9aa287da529f5
+    '2.12': sha256:d5b1d00752252d9c129e9284f26f8280e9899dd374167f257e29d5346eb544b3
