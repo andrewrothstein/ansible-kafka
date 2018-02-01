@@ -16,6 +16,12 @@
         mode: '0644'
         timeout: '{{kafka_download_timeout_seconds}}'
         checksum: '{{kafka_checksum}}'
+    - name: 'ensure {{kafka_install_parent_dir}} exists'
+      become: yes
+      become_user: root
+      file:
+        path: '{{kafka_install_parent_dir}}'
+        state: directory
     - name: unarchive...
       become: yes
       become_user: root
