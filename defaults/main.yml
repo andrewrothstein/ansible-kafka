@@ -2,9 +2,9 @@
 kafka_download_timeout_seconds: 600
 kafka_install_parent_dir: /usr/local
 
-kafka_mirror : http://apache.mirrors.hoobly.com/kafka
-kafka_scala_ver : '2.12'
-kafka_ver : '1.1.0'
+kafka_mirror: http://apache.mirrors.hoobly.com/kafka
+kafka_scala_ver: '2.12'
+kafka_ver: '2.0.0'
 
 kafka_checksums:
   '1.0.0':
@@ -19,3 +19,14 @@ kafka_checksums:
       sha512:48D1DDC7 1F5A5B1B 25D111F7 92553BE6 9BE62293 640A3C6A
                       F985203C 6EE88C6A A78E0132 7066BFAD 3FEAE6B0 B45D71C0
                       CAC6EBD2 D08843D9 22691327 41A3791B
+  '2.0.0':
+    # https://www.apache.org/dist/kafka/2.0.0/kafka_2.11-2.0.0.tgz.sha512
+    '2.11': >
+      sha512:A8CBC166 3FCAF4FD 4473EB55 1D43BD48 266BE518 032C8234
+                      826ED106 1E569EC3 EA9A7CE0 2606F211 908E356E AFA3BF21
+                      4E0F2325 0D0DBD08 A4279047 BA49DC73
+    # https://www.apache.org/dist/kafka/2.0.0/kafka_2.12-2.0.0.tgz.sha512
+    '2.12': >
+      sha512:B28E8170 5E30528F 1ABB6766 E22DFE9D AE50B1E1 E93330C8
+                      80928FF7 A08E6B38 EE71CBFC 96EC1436 9B2DFD24 29393870
+                      2CAB4221 73C8E019 55A9D174 6AE43F98

@@ -1,7 +1,7 @@
 ---
-kafka_name : 'kafka_{{kafka_scala_ver}}-{{kafka_ver}}'
-kafka_tgz : '{{kafka_name}}.tgz'
-kafka_tgz_url : '{{kafka_mirror}}/{{kafka_ver}}/{{kafka_tgz}}'
+kafka_name: 'kafka_{{kafka_scala_ver}}-{{kafka_ver}}'
+kafka_tgz: '{{kafka_name}}.tgz'
+kafka_tgz_url: '{{kafka_mirror}}/{{kafka_ver}}/{{kafka_tgz}}'
 kafka_checksum: '{{kafka_checksums[kafka_ver][kafka_scala_ver]}}'
 
 kafka_install_dir: '{{kafka_install_parent_dir}}/{{kafka_name}}'
