@@ -2,7 +2,7 @@
 - name: check for kafka installation..
   become: yes
   stat:
-    path: '{{kafka_install_dir}}'
+    path: '{{ kafka_install_dir }}'
   changed_when: false
   register: kafka_binary
 - when: not kafka_binary.stat.exists
@@ -11,16 +11,16 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{kafka_tgz_url}}'
-        dest: /tmp/{{kafka_tgz}}
+        url: '{{ kafka_tgz_url }}'
+        dest: /tmp/{{ kafka_tgz }}
         mode: '0644'
-        timeout: '{{kafka_download_timeout_seconds}}'
-        checksum: '{{kafka_checksum}}'
-    - name: 'ensure {{kafka_install_parent_dir}} exists'
+        timeout: '{{ kafka_download_timeout_seconds }}'
+        checksum: '{{ kafka_checksum }}'
+    - name: 'ensure {{ kafka_install_parent_dir }} exists'
       become: yes
       become_user: root
       file:
-        path: '{{kafka_install_parent_dir}}'
+        path: '{{ kafka_install_parent_dir }}'
         state: directory
         mode: '0755'
     - name: unarchive...
@@ -28,23 +28,23 @@
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{kafka_tgz}}
-        dest: '{{kafka_install_parent_dir}}'
-        creates: '{{kafka_install_dir}}'
+        src: /tmp/{{ kafka_tgz }}
+        dest: '{{ kafka_install_parent_dir }}'
+        creates: '{{ kafka_install_dir }}'
   always:
     - name: delete archive...
       become: yes
       become_user: root
       file:
-        path: /tmp/{{kafka_tgz}}
+        path: /tmp/{{ kafka_tgz }}
         state: absent
 
 - name: link...
   become: yes
   become_user: root
   file:
-    src: '{{kafka_install_dir}}'
-    dest: '{{kafka_install_link_dir}}'
+    src: '{{ kafka_install_dir }}'
+    dest: '{{ kafka_install_link_dir }}'
     state: link
 
 - name: include kafka in the default path
@@ -54,6 +54,6 @@
     - d: /etc/profile.d
       f: kafka.sh
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m|default("0644")}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m|default("0644") }}'
