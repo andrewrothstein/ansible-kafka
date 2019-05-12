@@ -1,29 +1,26 @@
----
+dependencies:
+- role: andrewrothstein.unarchive-deps
+  version: v1.0.10
+- role: andrewrothstein.openjdk
+  version: v1.0.0
 galaxy_info:
   author: Andrew Rothstein
-  description: apache kafka role
   company: BlackRock
+  description: apache kafka role
+  galaxy_tags:
+  - kafka
+  - queue
+  - cqrs
   license:
-    - MIT
+  - MIT
   min_ansible_version: 1.2
   platforms:
-    - name: EL
-      versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
-    - name: Ubuntu
-      versions:
-        - all
-
-  galaxy_tags:
-    - kafka
-    - queue
-    - cqrs
-
-dependencies:
-  - role: andrewrothstein.unarchive-deps
-    version: v1.0.10
-  - role: andrewrothstein.java-oracle-jre
-    version: v2.1.2
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
