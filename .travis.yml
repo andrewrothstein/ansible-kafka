@@ -5,6 +5,8 @@ dist: xenial
 env:
 - OS=archlinux_latest
 - OS=centos_7
+- OS=debian_jessie
+- OS=debian_stretch
 - OS=fedora_23
 - OS=fedora_24
 - OS=fedora_25
@@ -13,11 +15,9 @@ env:
 - OS=fedora_28
 - OS=fedora_29
 - OS=fedora_30
-- OS=debian_jessie
-- OS=debian_stretch
+- OS=ubuntu_bionic
 - OS=ubuntu_trusty
 - OS=ubuntu_xenial
-- OS=ubuntu_bionic
 language: python
 python: '3.7'
 script:
