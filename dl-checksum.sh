@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-VER=2.3.0
+VER=${1:-2.3.1}
 DIR=~/Downloads
 MIRROR=https://www.apache.org/dist/kafka/${VER}
 
