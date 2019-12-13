@@ -1,0 +1,19 @@
+---
+- name: install systemd unit
+  become: yes
+  become_user: root
+  with_items:
+    - f: kafka.service
+      d: /etc/systemd/system
+  register: kafka_service_installed
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m|default("0644") }}'
+
+- name: systemctl daemon-reload
+  become: yes
+  become_user: root
+  when: kafka_service_installed is changed
+  systemd:
+    daemon_reload: yes

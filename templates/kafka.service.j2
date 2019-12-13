@@ -1,0 +1,18 @@
+[Unit]
+Description=Apache Kafka
+Documentation=https://kafka.apache.org/documentation/
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/usr/local/java/java-oracle.env
+EnvironmentFile=-/usr/local/java/oracle-jre.env
+ExecStart={{kafka_install_link_dir}}/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+ExecStop={{kafka_install_link_dir}}/bin/kafka-server-stop.sh
+Restart=on-failure
+RestartSec=3
+WorkingDirectory={{kafka_install_link_dir}}
+
+[Install]
+WantedBy=multi-user.target

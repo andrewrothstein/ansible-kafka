@@ -57,3 +57,25 @@
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m|default("0644") }}'
+
+- name: generate server.properties
+  become: yes
+  become_user: root
+  template:
+    src: "server.properties.j2"
+    dest: "{{ kafka_install_dir }}/config/server.properties"
+    mode: 0644
+  register: config_update
+  tags: kafka_config
+
+- name: configure system kafka to use systemd
+  include_tasks: 'systemd.yml'
+  when: kafka_use_systemd
+
+- name:
+  service:
+    name: kafka
+    enabled: yes
+    state: restarted
+  when: kafka_use_systemd and config_update is changed
+  tags: kafka_config
