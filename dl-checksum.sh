@@ -1,19 +1,23 @@
 #!/usr/bin/env sh
-VER=${1:-2.3.1}
 DIR=~/Downloads
-MIRROR=https://www.apache.org/dist/kafka/${VER}
+MIRROR=https://www.apache.org/dist/kafka
 
 dl()
 {
-    SCALAVER=$1
-    URL=$MIRROR/kafka_${SCALAVER}-${VER}.tgz.sha512
+    local ver=$1
+    local scala_ver=$2
+    local url=$MIRROR/$ver/kafka_${scala_ver}-${ver}.tgz.sha512
 
-    printf "      # %s\n" $URL
-    printf "      '%s': sha512:%s\n" $SCALAVER `curl -sSL $URL | tr '\n' ' ' | tr -s '[:blank:]' ' ' | sed -e 's/ //g' | awk -F ':' '{print $2}'`
+    printf "      # %s\n" $url
+    printf "      '%s': sha512:%s\n" $scala_ver `curl -sSL $url | tr '\n' ' ' | tr -s '[:blank:]' ' ' | sed -e 's/ //g' | awk -F ':' '{print $2}'`
 }
 
-printf "  '%s':\n" $VER
-dl 2.11
-dl 2.12
+dl_ver() {
+    local ver=$1
+    printf "  '%s':\n" $ver
+    dl $ver 2.11
+    dl $ver 2.12
+}
 
 
+dl_ver ${1:-2.4.0}
