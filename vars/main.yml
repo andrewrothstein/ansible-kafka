@@ -1,6 +1,7 @@
 ---
-kafka_name: 'kafka_{{ kafka_scala_ver }}-{{ kafka_ver }}'
+kafka_name: kafka_{{ kafka_scala_ver }}-{{ kafka_ver }}
 kafka_tgz: '{{ kafka_name }}.tgz'
+kafka_tmp_tgz: /tmp/{{ kafka_tgz }}
 kafka_tgz_url: '{{ kafka_mirror }}/{{ kafka_ver }}/{{ kafka_tgz }}'
 kafka_checksum: '{{ kafka_checksums[kafka_ver][kafka_scala_ver] }}'
 

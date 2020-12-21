@@ -1,5 +1,5 @@
 ---
-- name: check for kafka installation..
+- name: check for kafka installation in {{ kafka_install_dir }}
   become: yes
   stat:
     path: '{{ kafka_install_dir }}'
@@ -7,7 +7,7 @@
   register: kafka_binary
 - when: not kafka_binary.stat.exists
   block:
-    - name: download kafka tgz...
+    - name: downloading {{ kafka_tgz_url }}
       become: yes
       become_user: root
       get_url:
@@ -16,30 +16,30 @@
         mode: '0644'
         timeout: '{{ kafka_download_timeout_seconds }}'
         checksum: '{{ kafka_checksum }}'
-    - name: 'ensure {{ kafka_install_parent_dir }} exists'
+    - name: mkdir {{ kafka_install_parent_dir }}
       become: yes
       become_user: root
       file:
         path: '{{ kafka_install_parent_dir }}'
         state: directory
         mode: '0755'
-    - name: unarchive...
+    - name: unarchive {{ kafka_tmp_tgz }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ kafka_tgz }}
+        src: '{{ kafka_tmp_tgz }}'
         dest: '{{ kafka_install_parent_dir }}'
         creates: '{{ kafka_install_dir }}'
   always:
-    - name: delete archive...
+    - name: rm {{ kafka_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ kafka_tgz }}
+        path: '{{ kafka_tmp_tgz }}'
         state: absent
 
-- name: link...
+- name: linking {{ kafka_install_link_dir }} to {{ kafka_install_dir }}
   become: yes
   become_user: root
   file:
