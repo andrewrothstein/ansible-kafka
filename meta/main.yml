@@ -1,9 +1,9 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.2.0
+  version: v1.2.1
 - openjdk_app: jre
   role: andrewrothstein.openjdk
-  version: v2.0.15
+  version: v2.0.16
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -29,7 +29,6 @@ galaxy_info:
   - name: Fedora
     versions:
     - 34
-    - 35
   - name: Ubuntu
     versions:
     - bionic
