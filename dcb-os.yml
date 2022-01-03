@@ -1,9 +1,13 @@
+---
+- alpine_3.14
+- alpine_3.15
+- alpine_edge
 - archlinux_latest
 - centos_8
 - debian_bullseye
 - debian_buster
-- fedora_34
 - fedora_35
-- rockylinux_8.4
+- fedora_36
+- rockylinux_8
 - ubuntu_bionic
 - ubuntu_focal
