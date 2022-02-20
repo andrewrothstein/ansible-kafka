@@ -1,6 +1,6 @@
 ---
 - name: check for kafka installation in {{ kafka_install_dir }}
-  become: yes
+  become: true
   stat:
     path: '{{ kafka_install_dir }}'
   changed_when: false
@@ -8,7 +8,7 @@
 - when: not kafka_binary.stat.exists
   block:
     - name: downloading {{ kafka_tgz_url }}
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ kafka_tgz_url }}'
@@ -17,30 +17,30 @@
         timeout: '{{ kafka_download_timeout_seconds }}'
         checksum: '{{ kafka_checksum }}'
     - name: mkdir {{ kafka_install_parent_dir }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ kafka_install_parent_dir }}'
         state: directory
         mode: '0755'
     - name: unarchive {{ kafka_tmp_tgz }}
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
+        remote_src: true
         src: '{{ kafka_tmp_tgz }}'
         dest: '{{ kafka_install_parent_dir }}'
         creates: '{{ kafka_install_dir }}'
   always:
     - name: rm {{ kafka_tmp_tgz }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ kafka_tmp_tgz }}'
         state: absent
 
 - name: linking {{ kafka_install_link_dir }} to {{ kafka_install_dir }}
-  become: yes
+  become: true
   become_user: root
   file:
     src: '{{ kafka_install_dir }}'
@@ -48,7 +48,7 @@
     state: link
 
 - name: include kafka in the default path
-  become: yes
+  become: true
   become_user: root
   with_items:
     - d: /etc/profile.d
