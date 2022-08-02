@@ -9,8 +9,8 @@ dl()
     local scala_ver=$2
     local url=$MIRROR/$ver/kafka_${scala_ver}-${ver}.tgz.sha512
 
-    printf "      # %s\n" $url
-    printf "      '%s': sha512:%s\n" $scala_ver $(curl -sSL $url | tr '\n' ' ' | tr -s '[:blank:]' ' ' | sed -e 's/ //g' | awk -F ':' '{print $2}')
+    printf "    # %s\n" $url
+    printf "    '%s': sha512:%s\n" $scala_ver $(curl -sSL $url | tr '\n' ' ' | tr -s '[:blank:]' ' ' | sed -e 's/ //g' | awk -F ':' '{print $2}')
 }
 
 dl_ver() {
@@ -21,4 +21,4 @@ dl_ver() {
 }
 
 
-dl_ver ${1:-3.2.0}
+dl_ver ${1:-3.2.1}
