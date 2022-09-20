@@ -1,7 +1,4 @@
 ---
-dependencies:
-  - andrewrothstein.unarchive-deps
-  - andrewrothstein.temurin
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -30,8 +27,8 @@ galaxy_info:
     - 9
   - name: Fedora
     versions:
-    - 35
     - 36
+    - 37
   - name: Ubuntu
     versions:
     - bionic
