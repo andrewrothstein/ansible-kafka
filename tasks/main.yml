@@ -18,7 +18,7 @@
       become_user: root
       get_url:
         url: '{{ kafka_tgz_url }}'
-        dest: /tmp/{{ kafka_tgz }}
+        dest: '{{ kafka_tmp_tgz }}'
         mode: '0644'
         timeout: '{{ kafka_download_timeout_seconds }}'
         checksum: '{{ kafka_checksum }}'
