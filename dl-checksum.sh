@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e
 DIR=~/Downloads
-MIRROR=https://www.apache.org/dist/kafka
+MIRROR=https://downloads.apache.org/kafka
 
 dl()
 {
