@@ -2,7 +2,7 @@
 kafka_download_timeout_seconds: 600
 kafka_install_parent_dir: /usr/local
 
-kafka_mirror: https://downloads.apache.org/kafka
+kafka_mirror: https://archive.apache.org/dist/kafka
 kafka_scala_ver: '2.13'
 kafka_ver: 3.4.0
 
