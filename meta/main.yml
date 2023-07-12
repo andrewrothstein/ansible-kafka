@@ -4,11 +4,11 @@ galaxy_info:
   company: BlackRock
   description: apache kafka role
   galaxy_tags:
-  - kafka
-  - queue
-  - cqrs
+    - kafka
+    - queue
+    - cqrs
   license:
-  - MIT
+    - MIT
   min_ansible_version: 1.2
   platforms:
   - name: Alpine
@@ -19,18 +19,17 @@ galaxy_info:
       - all
   - name: Debian
     versions:
-    - bullseye
-    - buster
+      - bookworm
+      - bullseye
   - name: EL
     versions:
-    - 8
-    - 9
+      - 8
+      - 9
   - name: Fedora
     versions:
-    - 36
-    - 37
+      - 37
+      - 38
   - name: Ubuntu
     versions:
-    - bionic
-    - focal
-    - jammy
+      - focal
+      - jammy
