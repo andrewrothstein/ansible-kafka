@@ -1,6 +1,6 @@
 ---
 - include_role:
-    name: andrewrothstein.unarchive-deps
+    name: andrewrothstein.unarchivedeps
 - include_role:
     name: andrewrothstein.bash
 - include_role:
