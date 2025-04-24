@@ -16,9 +16,8 @@ dl()
 dl_ver() {
     local ver=$1
     printf "  '%s':\n" $ver
-    dl $ver 2.12
     dl $ver 2.13
 }
 
 
-dl_ver ${1:-3.9.0}
+dl_ver ${1:-4.0.0}
